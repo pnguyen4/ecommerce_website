@@ -1,0 +1,7 @@
+#+TITLE:  Personal Notes
+#+Author: Phillip Nguyen
+
+* TODOs
+0. setup private git repo, add instructors as collaborators
+1. make schema
+2.
