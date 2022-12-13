@@ -19,6 +19,8 @@ app.use('/public', express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 app.set("views", path.join(__dirname, "/views"));
 
+app.use(routes.ProductRouter);
+
 /*
 app.all('*', (req, res) => {
     res.status(404).send(`<h1>Page not found at url: ${req.url}</h1>`);

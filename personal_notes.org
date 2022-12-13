@@ -2,4 +2,6 @@
 #+Author: Phillip Nguyen
 
 * TODOs
-1. design api
+1. design api, add to routes
+2. product controller
+3. user controller
