@@ -2,6 +2,6 @@
 #+Author: Phillip Nguyen
 
 * TODOs
-1. set up project and dependencies
-2. create project struture
-3. initialize boilerplate
+1. boilerplate code
+1. setup and seed database
+2. design api
