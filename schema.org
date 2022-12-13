@@ -2,7 +2,7 @@
 #+AUTHOR: Phillip Nguyen
 
 * Entities
-** User
+*** User
 Properties:
 - username: ~String~
   - required
@@ -26,7 +26,7 @@ Properties:
 - favorites: ~Array[ObjectId]~
   - default value = empty array
 
-** Product
+*** Product
 Properties:
 - name: ~String~
   - required
@@ -47,24 +47,24 @@ Properties:
 - product_type: ~Array[Strings]~
 
 * Relationships
-** One to One
+*** One to One
 1. One user can have a favorties list
 
-** One to Many
+*** One to Many
 1. A favorties list can contain multiple products
 2. One item can have multiple product types
 
-** Many to Many
+*** Many to Many
 1. n/a
 
 * Reasoning
-** Using Array[ObjectId] for ~User~'s favorite ~Product~ s
+*** Using ~Array[ObjectId]~ for ~User~'s favorite ~Product~ items
 1. Can imagine items in store getting updates all the time (price, quantity, description, even names). More straightforward than updating embedded documents for all users. Can't think of anything particularly unique and static to use as an index.
 2. We could have a lot of different items in an online store, all being constantly updated, added or deleted. Potentially an update-heavy use case at scale.
 3. Easy to tell if item has been removed from store (by seeing if reference has been orphaned)
 4. Realistically, how many favorties is a user really going to have? Shouldn't impact read performance too much but we can set a max number of favorites without affecting too many users if it gets to that point.
 
-** Using Array[String] for each ~Product~
+*** Using ~Array[String]~ for each ~Product~
 1. I considered creating seperate collection for ~Product_Type~ and establishing a many-to-many relationship between ~Product_Type~ and ~Product~, but this approach instinctively feels redundant to me.
 2. The user should be able to browse products by pages of 9 items at a time and also filter by brand and product type. The best UX for this is one url with query strings.
 3. I'm thinking a single MongoDB aggregation pipeline using ~$skip~, ~$limit~, and ~$match~ would be the most straightforward way to achieve this.

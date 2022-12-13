@@ -2,6 +2,4 @@
 #+Author: Phillip Nguyen
 
 * TODOs
-1. boilerplate code
-1. setup and seed database
-2. design api
+1. design api

@@ -58,6 +58,6 @@ Uses Express Router to listen for all requests and delegates response generation
 - ~js/~: bits of javascript we might want the user to have (i.e. event listeners, etc)
 - ~images/~: we will be serving product images locally for this project
 
-** `scss/`
+** ~scss/~
 All files here will be compiled to CSS and outputted to ~public/css/~.
 ~sass --watch server/scss:server/public/css~ command started by ~npm run dev~ (alongside nodemon) will automatically detect and recompile when changes are made.

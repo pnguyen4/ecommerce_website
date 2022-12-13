@@ -3,7 +3,6 @@
   "description": "Beaconfire Project",
   "version": "1.0.0",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
     "dev": "nodemon server & sass --watch server/scss:server/public/css",
     "seed": "node server/config/seed"
@@ -19,13 +18,13 @@
   },
   "homepage": "https://github.com/pnguyen4/ecommerce_website#readme",
   "dependencies": {
-    "bcrypt": "^5.1.0",
+    "bcryptjs": "^2.4.3",
     "dotenv": "^16.0.3",
     "ejs": "^3.1.8",
     "express": "^4.18.2",
     "joi": "^17.7.0",
+    "joi-password-complexity": "^5.1.0",
     "jsonwebtoken": "^8.5.1",
-    "mongodb": "^4.12.1",
     "mongoose": "^6.8.0"
-  },
+  }
 }
