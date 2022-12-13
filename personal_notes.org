@@ -2,6 +2,6 @@
 #+Author: Phillip Nguyen
 
 * TODOs
-0. setup private git repo, add instructors as collaborators
-1. make schema
-2.
+1. set up project and dependencies
+2. create project struture
+3. initialize boilerplate

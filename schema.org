@@ -1,0 +1,70 @@
+#+TITLE: Schema
+#+AUTHOR: Phillip Nguyen
+
+* Entities
+** User
+Properties:
+- username: ~String~
+  - required
+  - min length = 2
+  - max length = 12
+  - alphanumerical (no special characters)
+  - unique
+- email: ~String~
+  - required
+  - min length = 4
+  - max length = 50 (although it's /possible/ to have much longer, this should cover pretty much everyone)
+  - no special characters besides @
+  - domain must contain 2 segments
+  - unique
+- password: ~String~
+  - required
+  - standard password complexity requirements
+  - stored as hashed value
+- isAdmin: ~Boolean~
+  - default value = false
+- favorites: ~Array[ObjectId]~
+  - default value = empty array
+
+** Product
+Properties:
+- name: ~String~
+  - required
+  - min length = 5
+  - max length = 140
+- description: ~String~
+  - default value = empty string
+  - max len = 1000
+- image_uri: ~String~
+  - filepath or url (images will be served from ~public/~ for now)
+- quantity: ~Number~
+  - integer
+  - min value = 0
+- price: ~Number~
+  - positive
+  - precision = 2
+- brand: ~String~
+- product_type: ~Array[Strings]~
+
+* Relationships
+** One to One
+1. One user can have a favorties list
+
+** One to Many
+1. A favorties list can contain multiple products
+2. One item can have multiple product types
+
+** Many to Many
+1. n/a
+
+* Reasoning
+** Using Array[ObjectId] for ~User~'s favorite ~Product~ s
+1. Can imagine items in store getting updates all the time (price, quantity, description, even names). More straightforward than updating embedded documents for all users. Can't think of anything particularly unique and static to use as an index.
+2. We could have a lot of different items in an online store, all being constantly updated, added or deleted. Potentially an update-heavy use case at scale.
+3. Easy to tell if item has been removed from store (by seeing if reference has been orphaned)
+4. Realistically, how many favorties is a user really going to have? Shouldn't impact read performance too much but we can set a max number of favorites without affecting too many users if it gets to that point.
+
+** Using Array[String] for each ~Product~
+1. I considered creating seperate collection for ~Product_Type~ and establishing a many-to-many relationship between ~Product_Type~ and ~Product~, but this approach instinctively feels redundant to me.
+2. The user should be able to browse products by pages of 9 items at a time and also filter by brand and product type. The best UX for this is one url with query strings.
+3. I'm thinking a single MongoDB aggregation pipeline using ~$skip~, ~$limit~, and ~$match~ would be the most straightforward way to achieve this.
