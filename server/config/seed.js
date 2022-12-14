@@ -43,7 +43,7 @@ async function run() {
                 quantity: randInt(100),
                 price: parseFloat(`${randInt(100)}.${randInt(100)}`),
                 brand: brands[i % 6],
-                product_type: [types[randInt(3)]],
+                product_type: [types[randInt(3)], types[randInt(3)]],
             });
         }
 
