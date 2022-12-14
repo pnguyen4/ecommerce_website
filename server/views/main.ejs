@@ -1,0 +1,31 @@
+<%- include("partials/header.ejs");                            _%>
+<%- include("partials/nav.ejs");                               _%>
+<%- include("partials/sidebar.ejs");                           _%>
+
+    <main class="container">
+<%      if (products) {                                        _%>
+<%          products.forEach((product, i) => {                 _%>
+<%              if (i % 3 == 0) {                               %>
+        <div class="row gallery">
+<%_             }                                               %>
+            <div class="col-xl-4">
+                <a href="/products/details/<%=product._id%>">
+                <img class="rounded mx-auto w-25" src="<%=product.image_uri%>">
+                <p class="my-1"><%=product.name%></p>
+                </a>
+                <p class="my-1">$<%=product.price%></p>
+            </div>
+<%              if ([2,5,8].includes(i)) {                       %>
+        </div>
+<%              }                                               _%>
+<%          });                                                 _%>
+<%      } else {                                                _%>
+        <div class="row center">
+            <div class="col">
+            Sorry, No Items Found!
+            </div>
+        </div>
+<%      }                                                        %>
+    </main>
+
+<%- include("partials/footer.ejs");                             _%>

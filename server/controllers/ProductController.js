@@ -18,10 +18,28 @@ exports.display_gallery = async (req, res) => {
 
         const products = await Product.find(filter)
                                       .skip(page * items_per_page)
-                                      .limit(items_per_page)
+                                      .limit(items_per_page);
 
-        res.status(200).send(products);
+        if (products.length > 0) res.render('main', {products});
+        else res.render('main', {products: undefined})
+        //res.status(200).send(products);
     } catch (error) {
         res.status(404).json({error});
+    }
+};
+
+exports.display_product = async (req, res) => {
+    try {
+        const id = req.params.productId;
+        if (!(id && id.match(/^[0-9a-fA-F]{24}$/))) throw("not a valid product uri.");
+
+        const product = await Product.findById(id);
+        if (!product) throw("product could not be found");
+
+        //res.status(200).send(product);
+        res.render('product_page', {product});
+    } catch (error) {
+        //res.status(404).json({error});
+        res.render('product_page', {product: undefined, error});
     }
 };

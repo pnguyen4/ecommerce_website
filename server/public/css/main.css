@@ -1,0 +1,21 @@
+main {
+  padding: 1rem; }
+
+.gallery:first-child {
+  border-top: 1px solid #CCC; }
+
+.col-xl-4 {
+  padding: 2rem;
+  border-left: 1px solid #CCC;
+  border-bottom: 1px solid #CCC; }
+
+.col-xl-4:last-child {
+  border-right: 1px solid #CCC;
+  padding-right: 2px; }
+
+a {
+  font-weight: bold;
+  color: black !important;
+  text-decoration: none !important; }
+
+/*# sourceMappingURL=main.css.map */

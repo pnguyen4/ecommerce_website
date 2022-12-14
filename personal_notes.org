@@ -2,6 +2,10 @@
 #+Author: Phillip Nguyen
 
 * TODOs
-1. design api, add to routes
-2. product controller
-3. user controller
+- render main view
+- design user routes
+  1. signup controller
+  2. login controller
+  3. favorite item controller
+  4. unfavorite item controller
+  5. logout controller (use jwt blacklist)
