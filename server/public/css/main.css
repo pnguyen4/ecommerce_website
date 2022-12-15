@@ -21,13 +21,19 @@ ul.mr-auto {
 ul.user {
   margin-right: 0.5em; }
 
-.flex-column li {
+ul.flex-column h4 {
+  margin-left: -1.5em;
+  margin-top: 0.5em; }
+ul.flex-column button#filter {
+  margin-top: 1em;
+  margin-left: -2em; }
+ul.flex-column li {
   list-style-type: none;
   margin-left: -2em;
   margin-bottom: 0.5em; }
-  .flex-column li a {
+  ul.flex-column li a {
     text-decoration: none !important; }
-  .flex-column li button {
+  ul.flex-column li button {
     border: 1px solid #EEEEEE; }
 
 .form-user {

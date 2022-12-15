@@ -1,5 +1,38 @@
+<% const brands = [1,2,3,4,5,6].map(x => `brand${x}`);
+   const types = [1,2,3].map(x=> `type${x}`);
+   const brandChecked = brand => {
+        if (!req.query.brand) return false;
+        const toggle = [req.query.brand].flat().indexOf(brand);
+        return toggle > -1;
+   }
+   const typeChecked = t => {
+        if (!req.query.type) return false;
+        const toggle = [req.query.type].flat().indexOf(t);
+        return toggle > -1;
+   }                                                            %>
+
     <nav class="col-md-2 left-sidebar d-none d-md-block">
-        <ul class="flex-column">
-            <li class="nav-item">test</li>
-        </ul>
+        <form>
+            <ul class="flex-column">
+                <h4>Brand</h4>
+                <% brands.forEach(brand => { %>
+                <li>
+                    <input type="checkbox" name="brand" value=<%= brand %>
+                                 <% if(brandChecked(brand)) { %> checked <% } %> >
+                    <%= brand %>
+                </li>
+                <% })  %>
+
+                <h4>Product Type</h4>
+                <% types.forEach(t => { %>
+                <li>
+                    <input type="checkbox" name="type" value=<%= t %>
+                                 <% if(typeChecked(t)) { %> checked <% } %> >
+                    <%= t %>
+                </li>
+                <% })  %>
+
+                <button id="filter">Filter</button>
+            </ul>
+        </form>
     </nav>

@@ -34,7 +34,15 @@ ul.user {
     margin-right: 0.5em;
 }
 
-.flex-column {
+ul.flex-column {
+    h4 {
+        margin-left: -1.5em;
+        margin-top: 0.5em;
+    }
+    button#filter {
+        margin-top: 1em;
+        margin-left: -2em;
+    }
     li {
         list-style-type: none;
         margin-left: -2em;

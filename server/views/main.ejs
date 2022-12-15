@@ -3,14 +3,12 @@
     <div class="container">
     <div class="row">
 
-<%- include("partials/filterpanel.ejs");                           _%>
+<%- include("partials/filterpanel.ejs");                       _%>
 
     <main class="col-md-9">
         <div class="row">
 <%      if (products) {                                        _%>
 <%          products.forEach((product, i) => {                 _%>
-<%              if (i % 3 == 0) {                               %>
-<%_             }                                               %>
             <div class="col-md-4">
                 <div class="card mb-4 box-shadow">
                     <img class="card-img-top" src="<%=product.image_uri%>">
@@ -30,7 +28,9 @@
 <%      }                                                        %>
         </div>
     </main>
-<%- include("partials/sidebar.ejs");                           _%>
+<%  if (req.user) {                                              %>
+<%-     include("partials/sidebar.ejs");                        _%>
+<%  }                                                            %>
 
     </div>
     </div>
