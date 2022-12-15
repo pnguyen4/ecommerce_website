@@ -1,6 +1,6 @@
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4 sticky-top">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item <% if(req.url=="/") {%> active <% } %>">
+            <li class="nav-item <% if(req.url=="/products") {%> active <% } %>">
                 <a class="nav-link" href="/">Home</a>
             </li>
 <%      if (req.cookies.jwt) {                              %>
@@ -10,7 +10,7 @@
             </li>
 <%      } else {                                            %>
             <li class="nav-item">
-                <a class="nav-link">Sign Up</a>
+                <a class="nav-link" href="/user/signup">Sign Up</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/user/login">Login</a>

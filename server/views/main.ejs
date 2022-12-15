@@ -1,31 +1,35 @@
 <%- include("partials/header.ejs");                            _%>
 <%- include("partials/nav.ejs");                               _%>
-<%- include("partials/sidebar.ejs");                           _%>
+    <div class="container">
+    <div class="row">
 
-    <main class="container">
+    <main class="col-md-10">
+        <div class="row">
 <%      if (products) {                                        _%>
 <%          products.forEach((product, i) => {                 _%>
 <%              if (i % 3 == 0) {                               %>
-        <div class="row gallery">
 <%_             }                                               %>
-            <div class="col-xl-4">
-                <a class="product-link" href="/products/details/<%=product._id%>">
-                <img class="rounded mx-auto w-25" src="<%=product.image_uri%>">
-                <p class="my-1"><%=product.name%></p>
-                </a>
-                <p class="my-1">$<%=product.price%></p>
+            <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                    <img class="card-img-top" src="<%=product.image_uri%>">
+                    <div class="card-body">
+                        <a href="/products/details/<%=product._id%>">
+                            <p class="my-1"><%=product.name%></p>
+                        </a>
+                        <p class="my-1">$<%=product.price%></p>
+                    </div>
+                </div>
             </div>
-<%              if ([2,5,8].includes(i)) {                       %>
-        </div>
-<%              }                                               _%>
 <%          });                                                 _%>
 <%      } else {                                                _%>
-        <div class="row center">
             <div class="col">
             Sorry, No Items Found!
             </div>
-        </div>
 <%      }                                                        %>
+        </div>
     </main>
+<%- include("partials/sidebar.ejs");                           _%>
 
+    </div>
+    </div>
 <%- include("partials/footer.ejs");                             _%>

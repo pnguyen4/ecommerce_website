@@ -1,28 +1,24 @@
-$border : #CCC;
+$dark-link: #333333;
+$sidebar: #EEEEEE;
 
 main {
     padding: 1rem;
 }
 
-.gallery:first-child {
-    border-top: 1px solid $border;
+.card {
+    img {
+        height: auto;
+        width: 100%;
+        display: block;
+    }
 }
 
-.col-xl-4 {
-    padding: 2rem;
-    border-left: 1px solid $border;
-    border-bottom: 1px solid $border;
-}
-
-.col-xl-4:last-child {
-    border-right: 1px solid $border;
-    padding-right: 2px;
-}
-
-a.product-link {
-    font-weight: bold;
-    color: black !important;
-    text-decoration: none !important;
+.card-body {
+    a {
+        font-weight: bold;
+        color: $dark-link !important;
+        text-decoration: none !important;
+    }
 }
 
 li.active {
@@ -45,4 +41,20 @@ li.active {
     button {
         width: 100%;
     }
+}
+
+.sidebar {
+  position: fixed;
+  top: 57px;
+  bottom: 0;
+  right: 0;
+  overflow-x: hidden;
+  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+  background-color: $sidebar;
+}
+
+.sidebar-sticky {
+}
+
+main.col-md-10 {
 }
