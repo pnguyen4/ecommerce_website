@@ -19,7 +19,7 @@ exports.display_gallery = async (req, res) => {
         if (req.user) {
             const query = await User.findById(req.user._id, 'favorites -_id')
                                     .populate('favorites');
-            console.log(`user favorites list: ${query.favorites}`)
+            //console.log(`user favorites list: ${query.favorites}`)
             favorites = query.favorites;
         }
 

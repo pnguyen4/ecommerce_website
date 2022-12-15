@@ -3,10 +3,10 @@
         <ul class="flex-column">
 <%          for (let product of favorites) {                    %>
             <li>
-                <a href="/products/details/<%= product._id %>"><%= product.name %></a>
                 <button id="<%= product._id %>">🗑️</button>
+                <a href="/products/details/<%= product._id %>"><%= product.name %></a>
             </li>
 <%          }                                                   %>
         </ul>
-        <script src="/public/js/unfavorite.js"></script>
+        <script src="/public/js/sidebar.js"></script>
     </nav>

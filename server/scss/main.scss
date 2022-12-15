@@ -36,6 +36,9 @@ ul.user {
 
 .flex-column {
     li {
+        list-style-type: none;
+        margin-left: -2em;
+        margin-bottom: 0.5em;
         a {
             text-decoration: none !important;
         }
@@ -81,7 +84,7 @@ ul.user {
     left: 0;
 }
 
-main.col-md-10 {
+main.col-md-9 {
     margin: auto;
 }
 

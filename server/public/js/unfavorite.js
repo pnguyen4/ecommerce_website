@@ -1,11 +1,8 @@
-const favorites_list = document.getElementById('favorites_list');
+const btn = document.getElementById('unfavorite');
 
-favorites_list.addEventListener('click', async e => {
-    const API_URL = "http://localhost:3000";
-    const product = e.target.id;
-
-    await fetch(`${API_URL}/products/details/${product}`, {
-        method: 'DELETE',
+btn.addEventListener('click', async e => {
+    await fetch(location.href, {
+        method: 'delete',
         headers: {
             'Content-Type': 'application/json'
         }

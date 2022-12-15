@@ -2,11 +2,13 @@
 #+Author: Phillip Nguyen
 
 * TODOs
-- prettify product page
-  - add row gallery at the bottom of product page to display products from the same brand
+- filter panel
+- admin page
+- prettify product page's main card
+- add row gallery below product page's main card to display products from the same brand
+- get actual product names, descriptions, images
 
 ** Other
 - if have time: refactor signup (insert form data in esj as input values and resend page to client)
 - if have time: refactor login
 - if have time: refactor logout (it's weird hack for a link to call a javascript function...)
-- if have time: add unfavorite button on product page also

@@ -21,10 +21,14 @@ ul.mr-auto {
 ul.user {
   margin-right: 0.5em; }
 
-.flex-column li a {
-  text-decoration: none !important; }
-.flex-column li button {
-  border: 1px solid #EEEEEE; }
+.flex-column li {
+  list-style-type: none;
+  margin-left: -2em;
+  margin-bottom: 0.5em; }
+  .flex-column li a {
+    text-decoration: none !important; }
+  .flex-column li button {
+    border: 1px solid #EEEEEE; }
 
 .form-user {
   width: 100%;
@@ -54,7 +58,7 @@ ul.user {
 .left-sidebar {
   left: 0; }
 
-main.col-md-10 {
+main.col-md-9 {
   margin: auto; }
 
 /*# sourceMappingURL=main.css.map */

@@ -1,13 +1,13 @@
-<%- include("partials/header.ejs");                    %>
-<%- include("partials/nav.ejs");                       %>
+<%- include("partials/header.ejs");                                         %>
+<%- include("partials/nav.ejs");                                            %>
 
     <main class="container">
         <div class="row center">
-<%        if (!product) {                              %>
+<%        if (!product) {                                                   %>
             <div class="col">
             Sorry, No Items Found! Msg: <%= error %>
             </div>
-<%        } else {                                     %>
+<%        } else {                                                          %>
                 <div class="col-xl-3">
                     <img class="h-50" src="<%= product.image_uri %>">
                 </div>
@@ -17,11 +17,14 @@
                     <p>$ <%= product.price %></p>
                     <p><%= product.brand %></p>
                     <p><%= product.type  %></p>
-<%              if (!favorited && req.user) {          %>
+<%              if (!favorited && req.user) {                               %>
                     <button id="favorite">Favorite</button>
                     <script src="/public/js/favorite.js"></script>
-<%              }                                      %>
-<%        }                                            %>
+<%              } else {                                                    %>
+                    <button id="unfavorite">Unfavorite</button>
+                    <script src="/public/js/unfavorite.js"></script>
+<%              }                                                           %>
+<%        }                                                                 %>
             </div>
         </div>
     </main>
