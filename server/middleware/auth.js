@@ -16,7 +16,7 @@ module.exports = async (req, res, next) => {
 
     jwt.verify(token, process.env.JWT_KEY, (err, payload) => {
         if (err) {
-            return res.status(400).send(`<h1>INVALID AUTH TOKEN: ${err}</h1>`);
+            return res.status(401).send(`<h1>INVALID AUTH TOKEN: ${err}</h1>`);
         } else {
             req.user = payload;
             next();

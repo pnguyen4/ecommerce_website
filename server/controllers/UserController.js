@@ -22,7 +22,7 @@ exports.signup_user = async (req, res) => {
               msg.password = "Password needs to be at least 8 characters long and include at least 1 of: symbol, number, uppercase, and lowercase letter."
           }
           //const msg = error.details.map(item => item.message);
-          return res.status(400).json({ msg });
+          return res.status(422).json({ msg });
       }
 
       profile.password = await bcrypt.hash(req.body.password, Number(process.env.SALT))
@@ -30,7 +30,7 @@ exports.signup_user = async (req, res) => {
       res.status(201).send({user});
   } catch (error) {
       msg.user = "Username or email already taken.";
-      res.status(400).json({ msg });
+      res.status(409).json({ msg });
   }
 };
 
@@ -40,13 +40,13 @@ exports.login_user = async (req, res) => {
         const user = await User.findOne({ username: req.body.username });
         if (!user) {
             msg.user = "Invalid username or email.";
-            return res.status(400).json({ msg });
+            return res.status(422).json({ msg });
         }
 
         const password = await bcrypt.compare(req.body.password, user.password);
         if (!password) {
             msg.password = "Incorrect password.";
-            return res.status(400).json({ msg });
+            return res.status(422).json({ msg });
         }
 
         const token_payload = {_id: user._id, username: user.username};
@@ -56,7 +56,7 @@ exports.login_user = async (req, res) => {
     } catch (error) {
         console.log(error);
         msg.other = "Server error.";
-        res.status(400).json({ msg });
+        res.status(500).json({ msg });
     }
 };
 
@@ -70,6 +70,6 @@ exports.logout_user = async (req, res) => {
         res.clearCookie('jwt');
         res.send("User Signed Out.");
     } catch (error) {
-        res.status(400).json({msg: error});
+        res.status(500).json({msg: error});
     }
 };

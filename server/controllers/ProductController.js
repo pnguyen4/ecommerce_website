@@ -1,4 +1,5 @@
 const Product = require("../models/Product");
+const User = require("../models/User");
 const items_per_page = 9;
 
 exports.display_gallery = async (req, res) => {
@@ -13,8 +14,9 @@ exports.display_gallery = async (req, res) => {
                 { "$in": [req.query.type].flat() } : {"$exists": true}
         };
 
-        // TODO: if auth passes, use req.user to get favorites list and pass on to view if so
         const favorites = {};
+        if (req.user) {
+        }
 
         const products = await Product.find(filter)
                                       .skip(page * items_per_page)
