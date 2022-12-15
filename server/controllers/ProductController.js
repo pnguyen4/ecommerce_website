@@ -3,6 +3,7 @@ const { User } = require("../models/User");
 const items_per_page = 9;
 
 exports.display_gallery = async (req, res) => {
+    if (req.user && req.user.isAdmin) return res.redirect('/');
     try {
         let page = (req.query.page ?? 1) - 1;
         if (page < 0) page = 0;
@@ -36,6 +37,7 @@ exports.display_gallery = async (req, res) => {
 };
 
 exports.display_product = async (req, res) => {
+    if (req.user && req.user.isAdmin) return res.redirect('/');
     try {
         const id = req.params.productId;
         if (!(id && id.match(/^[0-9a-fA-F]{24}$/))) throw("not a valid product uri.");
@@ -60,6 +62,9 @@ exports.display_product = async (req, res) => {
 };
 
 exports.add_favorite_product = async (req, res) => {
+    if (req.user && req.user.isAdmin) {
+        return res.status(422).json({error: "Admin can't favorite product"});
+    }
     try {
         // should be idempotent
         const query = await User.updateOne({ _id: req.user._id },
@@ -73,6 +78,9 @@ exports.add_favorite_product = async (req, res) => {
 };
 
 exports.delete_favorite_product = async (req, res) => {
+    if (req.user && req.user.isAdmin) {
+        return res.status(422).json({error: "Admin can't unfavorite product"});
+    }
     try {
         const query = await User.updateOne({ _id: req.user._id },
                                            { "$pull":

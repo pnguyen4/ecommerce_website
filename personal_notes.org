@@ -2,7 +2,9 @@
 #+Author: Phillip Nguyen
 
 * TODOs
-- admin page
 - prettify product page's main card
 - add row gallery below product page's main card to display products from the same brand
 - get actual product names, descriptions, images
+
+** Other
+- prettify admin page if have time

@@ -6,7 +6,4 @@ router.post('/user/signup', controller.signup_user);
 router.post('/user/login', controller.login_user);
 router.post('/user/logout', auth.requires_token, controller.logout_user);
 
-// TODO: POST: favorite item
-// TODO: DELETE: unfavortie item
-
 module.exports = router;

@@ -1,0 +1,17 @@
+<%- include("partials/header.ejs");                            _%>
+<%- include("partials/nav.ejs");                               _%>
+    <div class="container">
+        <div class="row">
+        <% for (let user of users) { %>
+            <div class="col-lg-3 bg-light m-2">
+            <%= user.username %> favorites:
+            <ul>
+            <% for (let item of user.favorites) { %>
+                <li><%= item.name %></li>
+            <% } %>
+            </ul>
+            </div>
+        <% } %>
+
+    </div>
+<%- include("partials/footer.ejs");                            _%>

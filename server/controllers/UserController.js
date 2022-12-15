@@ -7,6 +7,7 @@ const { User, validate } = require("../models/User");
 const Blacklist = require("../models/Blacklist");
 
 exports.signup_user = async (req, res) => {
+  if (req.user) return res.redirect('/');
   let msg = {};
   try {
       // username is guaranteed to be unique because of schema
@@ -35,6 +36,7 @@ exports.signup_user = async (req, res) => {
 };
 
 exports.login_user = async (req, res) => {
+    if (req.user) return res.redirect('/');
     let msg = {};
     try {
         const user = await User.findOne({ username: req.body.username });
@@ -49,7 +51,7 @@ exports.login_user = async (req, res) => {
             return res.status(422).json({ msg });
         }
 
-        const token_payload = {_id: user._id, username: user.username};
+        const token_payload = {_id: user._id, username: user.username, isAdmin: user.isAdmin};
         const token = jwt.sign(token_payload, process.env.JWT_KEY,{ expiresIn: "1d" });
         res.cookie('jwt', token, {'httpOnly': true});
         res.status(200).send({token});
@@ -61,6 +63,7 @@ exports.login_user = async (req, res) => {
 };
 
 exports.logout_user = async (req, res) => {
+    // will only make it to this point if passed auth middleware
     try {
         // Convert time from Unix epoch from seconds to milliseconds
         const date = new Date(req.user.exp*1000)

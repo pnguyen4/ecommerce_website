@@ -20,7 +20,7 @@
 <%              if (!favorited && req.user) {                               %>
                     <button id="favorite">Favorite</button>
                     <script src="/public/js/favorite.js"></script>
-<%              } else {                                                    %>
+<%              } else if (req.user){                                       %>
                     <button id="unfavorite">Unfavorite</button>
                     <script src="/public/js/unfavorite.js"></script>
 <%              }                                                           %>

@@ -27,6 +27,7 @@ exports.requires_token = async (req, res, next) => {
 exports.optional_token = async (req, res, next) => {
     const token = req.cookies.jwt;
     if (!token) {
+        req.user = undefined;
         return next();
     }
 
