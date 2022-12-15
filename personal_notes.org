@@ -2,10 +2,13 @@
 #+Author: Phillip Nguyen
 
 * TODOs
-- render main view
 - design user routes
-  1. signup controller
-  2. login controller
-  3. favorite item controller
-  4. unfavorite item controller
-  5. logout controller (use jwt blacklist)
+  1. favorite item controller
+  2. unfavorite item controller
+  3. logout controller (use jwt blacklist)
+- create side bar
+- prettify main view
+
+** Other
+- if have time: refactor signup (insert form data in esj as input values and resend page to client)
+- if have time: refactor login

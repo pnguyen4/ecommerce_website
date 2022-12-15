@@ -13,9 +13,23 @@ main {
   border-right: 1px solid #CCC;
   padding-right: 2px; }
 
-a {
+a.product-link {
   font-weight: bold;
   color: black !important;
   text-decoration: none !important; }
+
+li.active {
+  font-weight: bold; }
+
+.form-user {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto; }
+
+.form-user div input {
+  width: 100%; }
+.form-user button {
+  width: 100%; }
 
 /*# sourceMappingURL=main.css.map */

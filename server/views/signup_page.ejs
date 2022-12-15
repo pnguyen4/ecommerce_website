@@ -1,0 +1,33 @@
+<%- include("partials/header.ejs");                            _%>
+
+    <form id="userportal" class="form-user">
+        <h1 class="h3 mb-3 font-weight-normal text-center">Create account</h1>
+        <div class="mb-3">
+            <label for="inputUsername">Username</label>
+            <input type="text" id="inputUsername" class="formcontrol" placeholder="Username" required autofocus>
+            <%# note: we're not using this right now%>
+            <div id="userAlert"></div>
+        </div>
+        <div class="mb-3">
+            <label for="inputEmail">Email address</label>
+            <input type="email" id="inputEmail" class="formcontrol" placeholder="Email" required >
+            <%# note: we're not using this right now%>
+            <div id="emailAlert"></div>
+        </div>
+        <div class="mb-3">
+            <label for="inputPassword">Password</label>
+            <input type="password" id="inputPassword" class="formcontrol" placeholder="Password" required>
+            <div id="passwordAlert"></div>
+        </div>
+        <div class="mb-3">
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" id="confirmPassword" class="formcontrol" placeholder="Confirm password" required>
+            <div id="confirmAlert"></div>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block mt-3" type="submit">Sign in</button>
+        <div id="msg">
+        </div>
+    </form>
+    <script src="/public/js/signup.js"></script>
+
+<%- include("partials/footer.ejs");                            _%>

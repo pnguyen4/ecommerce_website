@@ -3,13 +3,23 @@
 <%- include("partials/sidebar.ejs");                   %>
 
     <main class="container">
-<%        if (!product) {                              %>
         <div class="row center">
+<%        if (!product) {                              %>
             <div class="col">
             Sorry, No Items Found! Msg: <%= error %>
             </div>
-        </div>
+<%        } else {                                     %>
+                <div class="col-xl-3">
+                    <img class="h-50" src="<%= product.image_uri %>">
+                </div>
+                <div class="col">
+                    <p><%= product.name %> <%# TODO: make good looking page %></p>
+                    <p><%= product.description %></p>
+                    <p>$ <%= product.price %></p>
+                    <p><%= product.brand %></p>
+                    <p><%= product.type  %></p>
 <%        }                                            %>
-        <%= product %> <%# TODO: make good looking page %>
+            </div>
+        </div>
     </main>
 <%- include("partials/footer.ejs"); %>

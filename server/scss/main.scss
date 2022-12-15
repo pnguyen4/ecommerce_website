@@ -19,8 +19,30 @@ main {
     padding-right: 2px;
 }
 
-a {
+a.product-link {
     font-weight: bold;
     color: black !important;
     text-decoration: none !important;
+}
+
+li.active {
+    font-weight: bold;
+}
+
+.form-user {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.form-user {
+    div {
+        input {
+            width: 100%;
+        }
+    }
+    button {
+        width: 100%;
+    }
 }

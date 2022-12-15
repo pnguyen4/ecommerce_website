@@ -1,10 +1,13 @@
 const router = require("express").Router();
-//const controller = require("../controllers/UserController.js");
-//const auth = require('../middleware/auth.js');
+const controller = require("../controllers/UserController.js");
+const auth = require('../middleware/auth.js');
 
-// TODO: signup
-// TODO: login
 // TODO: logout
+router.post('/user/signup', controller.signup_user);
+router.post('/user/login', controller.login_user);
+//router.post('/user/logout', auth, controller.logout_user);
 
 // TODO: POST: favorite item
 // TODO: DELETE: unfavortie item
+
+module.exports = router;

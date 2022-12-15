@@ -20,11 +20,11 @@ app.set('view engine', 'ejs');
 app.set("views", path.join(__dirname, "/views"));
 
 app.use(routes.ProductRouter);
+app.use(routes.UserRouter);
+app.use(routes.UIRouter);
 
-/*
 app.all('*', (req, res) => {
     res.status(404).send(`<h1>Page not found at url: ${req.url}</h1>`);
 })
-*/
 
 module.exports = app;
