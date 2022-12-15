@@ -21,6 +21,11 @@ ul.mr-auto {
 ul.user {
   margin-right: 0.5em; }
 
+.flex-column li a {
+  text-decoration: none !important; }
+.flex-column li button {
+  border: 1px solid #EEEEEE; }
+
 .form-user {
   width: 100%;
   max-width: 330px;

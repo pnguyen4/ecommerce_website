@@ -2,8 +2,6 @@
 #+Author: Phillip Nguyen
 
 * TODOs
-- design user routes
-  1. unfavorite item controller
 - prettify product page
   - add row gallery at the bottom of product page to display products from the same brand
 

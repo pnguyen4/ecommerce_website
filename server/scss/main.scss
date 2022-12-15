@@ -34,6 +34,17 @@ ul.user {
     margin-right: 0.5em;
 }
 
+.flex-column {
+    li {
+        a {
+            text-decoration: none !important;
+        }
+        button {
+            border: 1px solid $sidebar;
+        }
+    }
+}
+
 .form-user {
     width: 100%;
     max-width: 330px;

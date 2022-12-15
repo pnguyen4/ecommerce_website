@@ -1,5 +1,12 @@
-    <nav class="col-md-2 right-sidebar d-none d-md-block">
+    <nav id="favorites_list" class="col-md-2 right-sidebar d-none d-md-block">
+        <h4>Favorites</h2>
         <ul class="flex-column">
-            <li class="nav-item">test</li>
+<%          for (let product of favorites) {                    %>
+            <li>
+                <a href="/products/details/<%= product._id %>"><%= product.name %></a>
+                <button id="<%= product._id %>">🗑️</button>
+            </li>
+<%          }                                                   %>
         </ul>
+        <script src="/public/js/unfavorite.js"></script>
     </nav>

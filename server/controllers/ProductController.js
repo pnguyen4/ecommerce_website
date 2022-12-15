@@ -71,3 +71,14 @@ exports.add_favorite_product = async (req, res) => {
         res.status(422).json(error);
     }
 };
+
+exports.delete_favorite_product = async (req, res) => {
+    try {
+        const query = await User.updateOne({ _id: req.user._id },
+                                           { "$pull":
+                                             { favorites: req.params.productId } });
+        res.status(200).json(query);
+    } catch (error) {
+        res.status(422).json(error);
+    }
+};
