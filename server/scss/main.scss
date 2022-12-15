@@ -80,7 +80,7 @@ ul.flex-column {
     top: 57px;
     bottom: 0;
     overflow-x: hidden;
-    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    overflow-y: auto;           // Scrollable contents if viewport is shorter than content.
     background-color: $sidebar;
 }
 
@@ -96,3 +96,10 @@ main.col-md-9 {
     margin: auto;
 }
 
+#navigation {
+    text-align: center;
+    a {
+        margin-left: 1em;
+        margin-right: 1em;
+    }
+}

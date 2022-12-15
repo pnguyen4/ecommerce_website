@@ -1,3 +1,20 @@
+<% const page = req.query.page;
+   function filter_strings() {
+       let string = "";
+       if (req.query.brand) {
+           [req.query.brand].flat().forEach(brand => {
+               string += `&brand=${brand}`;
+           })
+       }
+       if (req.query.type) {
+           [req.query.type].flat().forEach(t => {
+               string += `&type=${t}`;
+           })
+       }
+       console.log(string)
+       return string
+   }                                                            %>
+
 <%- include("partials/header.ejs");                            _%>
 <%- include("partials/nav.ejs");                               _%>
     <div class="container">
@@ -11,16 +28,33 @@
 <%          products.forEach((product, i) => {                 _%>
             <div class="col-md-4">
                 <div class="card mb-4 box-shadow">
-                    <img class="card-img-top" src="<%=product.image_uri%>">
+                    <img class="card-img-top" src="<%= product.image_uri %>">
                     <div class="card-body">
-                        <a href="/products/details/<%=product._id%>">
-                            <p class="my-1"><%=product.name%></p>
+                        <a href="/products/details/<%= product._id %>">
+                            <p class="my-1"><%= product.name %></p>
                         </a>
-                        <p class="my-1">$<%=product.price%></p>
+                        <p class="my-1">$<%= product.price %></p>
                     </div>
                 </div>
             </div>
 <%          });                                                 _%>
+            <div id="navigation">
+<%          if (page && page > 1) {                              %>
+            <a href="/products?page=<%= page - 1 %><%= filter_strings() %>">
+                Prev
+            </a>
+<%          }                                                    %>
+            <%# Occasionally will lead to "Sorry, No Items Found!" page %>
+<%          if (!page && products.length == 9) {                 %>
+                <a href="/products?page=2<%= filter_strings() %>">
+                    Next
+                </a>
+<%          } else if (products.length == 9) {                   %>
+                <a href="/products?page=<%= Number(page) + 1 %><%= filter_strings() %>">
+                    Next
+                </a>
+            </div>
+<%          }                                                    %>
 <%      } else {                                                _%>
             <div class="col">
             Sorry, No Items Found!
