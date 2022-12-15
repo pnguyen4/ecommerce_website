@@ -8,7 +8,8 @@ const UserSchema = new Schema({
     username: {type: String, required: true, unique: true},
     email: {type: String, required: true, unique: true},
     password: {type: String, required: true}, // will be securely hashed
-    favorites: {type: [refType], default: []},
+    //favorites: {type: [refType], default: []},
+    favorites: [{type: refType, ref: 'Product'}],
     isAdmin: {type: Boolean, required: true, default: false}
 });
 

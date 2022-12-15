@@ -3,6 +3,8 @@
             <li class="nav-item <% if(req.url=="/products") {%> active <% } %>">
                 <a class="nav-link" href="/">Home</a>
             </li>
+        </ul>
+        <ul class="navbar-nav user">
 <%      if (req.cookies.jwt) {                              %>
             <li class="nav-item">
                 <script src="/public/js/logout.js"></script>

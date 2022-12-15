@@ -25,14 +25,24 @@ li.active {
     font-weight: bold;
 }
 
+ul.mr-auto {
+    margin-right: auto;
+    margin-left: 0.5em;
+}
+
+ul.user {
+    margin-right: 0.5em;
+}
+
 .form-user {
     width: 100%;
     max-width: 330px;
     padding: 15px;
     margin: 0 auto;
-}
-
-.form-user {
+    margin-top: 10vh;
+    h1 {
+        margin-bottom: 5vh;
+    }
     div {
         input {
             width: 100%;
@@ -43,18 +53,24 @@ li.active {
     }
 }
 
-.sidebar {
-  position: fixed;
-  top: 57px;
-  bottom: 0;
-  right: 0;
-  overflow-x: hidden;
-  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-  background-color: $sidebar;
+.left-sidebar, .right-sidebar {
+    position: fixed;
+    top: 57px;
+    bottom: 0;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    background-color: $sidebar;
 }
 
-.sidebar-sticky {
+.right-sidebar {
+    right: 0;
+}
+
+.left-sidebar {
+    left: 0;
 }
 
 main.col-md-10 {
+    margin: auto;
 }
+

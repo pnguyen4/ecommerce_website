@@ -1,6 +1,5 @@
 <%- include("partials/header.ejs");                    %>
 <%- include("partials/nav.ejs");                       %>
-<%- include("partials/sidebar.ejs");                   %>
 
     <main class="container">
         <div class="row center">
@@ -18,6 +17,10 @@
                     <p>$ <%= product.price %></p>
                     <p><%= product.brand %></p>
                     <p><%= product.type  %></p>
+<%              if (!favorited && req.user) {          %>
+                    <button id="favorite">Favorite</button>
+                    <script src="/public/js/favorite.js"></script>
+<%              }                                      %>
 <%        }                                            %>
             </div>
         </div>
