@@ -29,22 +29,31 @@ This just:
 ** ~routes/~
 Uses Express Router to listen for all requests and delegates response generation to controller.
 - ~index.js~: aggregates all our routes
+- ~ProductRouter.js~: handles all requests related to products
+- ~UserRouter.js~: handles all requests related to user functions
+- ~UIRouter.js~: handles all requests for individual pages
 
 ** ~middleware/~
-- ~auth.js~: just checks to see if user request has a jwt token (meaning they are signed in) for routes that require it.
+- ~auth.js~: just checks to see if :
+  1. user request has a jwt token (meaning they are signed in) for routes that require it.
+  2. user's token is not blacklisted (meaning they haven't already signed out elsewhere)
+  3. user's token is valid (hasn't expired, malformed)
+
 
 ** ~controllers/~
 1. This contains the logic for generating responses to HTTP requests.
 2. Will interact with the database following the outline set by our schemas from ~Models/~
 3. After each successful operation the view will be re-rendered with SSR.
+- ~ProductController.js~
+- ~UserController.js~
 
 ** ~models/~
 - ~User.js~: user schema, also has Joi code for validating new/updated users
 - ~Product.js~: product schema
+- ~Blacklist.js~: stores user tokens with a TTL equal to token's expiration date.
 
 ** ~views/~
-- ~main.ejs~: handles all the logic for conditional rendering
-- ~home.ejs~: home page for regular users; main view for browsing products using pagination
+- ~main.ejs~: home page for regular users; main view for browsing products using pagination
 - ~admin_page.ejs~: special page that allows admins to view all existing user accounts and their favorites list
 - ~signup_page.ejs~
 - ~login_page.ejs~

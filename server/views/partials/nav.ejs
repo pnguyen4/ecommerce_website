@@ -5,11 +5,12 @@
             </li>
 <%      if (req.cookies.jwt) {                              %>
             <li class="nav-item">
-                <a class="nav-link">Logout</a>
+                <script src="/public/js/logout.js"></script>
+                <a class="nav-link" href="javascript:logout();">Logout</a>
             </li>
 <%      } else {                                            %>
             <li class="nav-item">
-                <a class="nav-link" href="/user/signup">Sign Up</a>
+                <a class="nav-link">Sign Up</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/user/login">Login</a>

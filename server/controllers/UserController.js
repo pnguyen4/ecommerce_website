@@ -4,6 +4,7 @@ const path = require('path');
 require("dotenv").config({ path: path.join(__dirname, '../.env') });
 
 const { User, validate } = require("../models/User");
+const Blacklist = require("../models/Blacklist");
 
 exports.signup_user = async (req, res) => {
   let msg = {};
@@ -60,4 +61,15 @@ exports.login_user = async (req, res) => {
 };
 
 exports.logout_user = async (req, res) => {
+    try {
+        // Convert time from Unix epoch from seconds to milliseconds
+        const date = new Date(req.user.exp*1000)
+        // We don't need to blacklist the token anymore after it expires
+        await Blacklist.create({token: req.cookies.jwt, expireAt: date});
+        // Tell user to delete cookie
+        res.clearCookie('jwt');
+        res.send("User Signed Out.");
+    } catch (error) {
+        res.status(400).json({msg: error});
+    }
 };
