@@ -11,6 +11,9 @@ main {
   color: #333333 !important;
   text-decoration: none !important; }
 
+.productname {
+  font-weight: bold; }
+
 li.active {
   font-weight: bold; }
 
@@ -71,5 +74,16 @@ main.col-md-9 {
   #navigation a {
     margin-left: 1em;
     margin-right: 1em; }
+
+#rowgallery {
+  overflow-x: scroll; }
+  #rowgallery .card {
+    min-width: 300px;
+    min-height: 300px;
+    margin: 1em; }
+
+#rowgallery_banner {
+  margin: 1em;
+  text-align: center; }
 
 /*# sourceMappingURL=main.css.map */

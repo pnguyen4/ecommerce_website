@@ -53,8 +53,11 @@ exports.display_product = async (req, res) => {
         const product = await Product.findById(id);
         if (!product) throw("product could not be found");
 
+        const brand_products = await Product.find({brand: product.brand});
+
+
         //res.status(200).send(product);
-        res.render('product_page', {product, favorited, req});
+        res.render('product_page', {product, favorited, brand_products, req});
     } catch (error) {
         //res.status(404).json({error});
         res.render('product_page', {product: undefined, req, error});

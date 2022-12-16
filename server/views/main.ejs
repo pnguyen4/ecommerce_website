@@ -4,14 +4,14 @@
        if (req.query.brand) {
            [req.query.brand].flat().forEach(brand => {
                string += `&brand=${brand}`;
-           })
+           });
        }
        if (req.query.type) {
            [req.query.type].flat().forEach(t => {
                string += `&type=${t}`;
-           })
+           });
        }
-       return string
+       return string;
    }                                                            %>
 
 <%- include("partials/header.ejs");                            _%>
@@ -39,9 +39,9 @@
 <%          });                                                 _%>
             <div id="navigation">
 <%          if (page && page > 1) {                              %>
-            <a href="/products?page=<%= page - 1 %><%= filter_strings() %>">
+                <a href="/products?page=<%= page - 1 %><%= filter_strings() %>">
                 Prev
-            </a>
+                </a>
 <%          }                                                    %>
             <%# Occasionally will lead to "Sorry, No Items Found!" page %>
 <%          if (!page && products.length == 9) {                 %>
@@ -65,6 +65,5 @@
 <%-     include("partials/sidebar.ejs");                        _%>
 <%  }                                                            %>
 
-    </div>
     </div>
 <%- include("partials/footer.ejs");                             _%>

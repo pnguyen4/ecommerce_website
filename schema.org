@@ -67,4 +67,4 @@ Properties:
 *** Using ~Array[String]~ for ~product_type~
 1. I considered creating seperate collection for ~Product_Type~ and establishing a many-to-many relationship between ~Product_Type~ and ~Product~, but this approach instinctively feels redundant to me.
 2. The user should be able to browse products by pages of 9 items at a time and also filter by brand and product type. The best UX for this is one url with query strings.
-3. I'm thinking a single MongoDB aggregation pipeline using ~$skip~, ~$limit~, and ~$match~ would be the most straightforward way to achieve this.
+3. I'm thinking a single MongoDB query using ~.find(filter)~, ~.skip(page*9)~, and ~.limit(9)~ would be the most straightforward way to achieve this.

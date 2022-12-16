@@ -2,21 +2,21 @@
 <%- include("partials/nav.ejs");                                            %>
 
     <main class="container">
-        <div class="row center">
+        <div class="row center p-5 bg-light rounded">
 <%        if (!product) {                                                   %>
             <div class="col">
             Sorry, No Items Found! Msg: <%= error %>
             </div>
 <%        } else {                                                          %>
-                <div class="col-xl-3">
-                    <img class="h-50" src="<%= product.image_uri %>">
+                <div class="col-xl-4">
+                    <img class="w-100" src="<%= product.image_uri %>">
                 </div>
                 <div class="col">
-                    <p><%= product.name %> <%# TODO: make good looking page %></p>
-                    <p><%= product.description %></p>
+                    <p class="productname"><%= product.name %></p>
                     <p>$ <%= product.price %></p>
-                    <p><%= product.brand %></p>
-                    <p><%= product.type  %></p>
+                    <p>Brand: <%= product.brand %></p>
+                    <p><%= product.description %></p>
+                    <p>Product Types: <%= product.product_type  %></p>
 <%              if (!favorited && req.user) {                               %>
                     <button id="favorite">Favorite</button>
                     <script src="/public/js/favorite.js"></script>
@@ -25,7 +25,21 @@
                     <script src="/public/js/unfavorite.js"></script>
 <%              }                                                           %>
 <%        }                                                                 %>
+                </div>
+        </div>
+        <h2 id="rowgallery_banner">More From This Brand</h2>
+        <div class="d-flex flex-row flex-nowrap" id="rowgallery">
+<%          brand_products.forEach(item => {                             %>
+            <div class="card mb-4 box-shadow">
+                <img class="card-img-top" src="<%= item.image_uri %>">
+                <div class="card-body">
+                    <a href="/products/details/<%= item._id %>">
+                        <p class="my-1"><%= item.name %></p>
+                    </a>
+                    <p class="my-1">$<%= item.price %></p>
+                </div>
             </div>
+<%            });                                                           %>
         </div>
     </main>
 <%- include("partials/footer.ejs"); %>
