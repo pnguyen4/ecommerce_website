@@ -10,28 +10,31 @@ exports.signup_user = async (req, res) => {
   if (req.user) return res.redirect('/');
   let msg = {};
   try {
-      // username and email is guaranteed to be unique because of schema
       let profile = { username: req.body.username,
                       email: req.body.email,
                       password: req.body.password };
       const { error } = validate(profile);
       if (error) {
+          if (error.details[0].context.label == "username") {
+              msg.user = "Username must be greater than 2 characters and less than 12.";
+          }
           if (error.details[0].context.label == "email") {
               msg.email = "Must be a valid email address."
           }
           if (error.details[0].context.label == "password") {
               msg.password = "Password needs to be at least 8 characters long and include at least 1 of: symbol, number, uppercase, and lowercase letter."
           }
-          //const msg = error.details.map(item => item.message);
-          throw('pass message to client');
+          return res.status(422).json({ msg });
       }
 
       profile.password = await bcrypt.hash(req.body.password, Number(process.env.SALT))
       const user = await User.create(profile);
       res.status(201).send({user});
   } catch (error) {
-      msg.user = "Username must be greater than 2 characters and less than 12. Username & Email must not be taken.";
-      res.status(422).json({ msg });
+      // Username and email is guaranteed to be unique because of schema
+      // Code will only reach this point if User.create(profile) fails
+      msg.user = "Username & Email must not be taken.";
+      res.status(409).json({ msg });
   }
 };
 

@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const Joi = require('joi');
-const passwordComplexity = require("joi-password-complexity");
 const refType = mongoose.Types.ObjectId;
 
 const UserSchema = new Schema({
@@ -17,7 +16,8 @@ const validate = (user) => {
     const schema = Joi.object({
         username: Joi.string().alphanum().min(2).max(12).required(),
         email: Joi.string().email().min(4).max(50).required(),
-        password: passwordComplexity().required(),
+        password: Joi.string()
+                     .pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/),
         isAdmin: Joi.boolean().sensitive(),
         favorties: Joi.array()
     });
