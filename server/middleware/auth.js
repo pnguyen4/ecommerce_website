@@ -16,7 +16,8 @@ exports.requires_token = async (req, res, next) => {
 
     jwt.verify(token, process.env.JWT_KEY, (err, payload) => {
         if (err) {
-            return res.status(401).send(`<h1>INVALID AUTH TOKEN: ${err}</h1>`);
+            res.clearCookie('jwt');
+            return res.status(401).send({msg: "Invalid token. Deleting cookie..."});
         } else {
             req.user = payload;
             next();
