@@ -26,7 +26,7 @@
 <%      if (products) {                                        _%>
 <%          products.forEach((product, i) => {                 _%>
             <div class="col-md-4">
-                <div class="card mb-4 box-shadow">
+                <div class="card mb-4 box-shadow bg-light">
                     <img class="card-img-top" src="<%= product.image_uri %>">
                     <div class="card-body">
                         <a href="/products/details/<%= product._id %>">

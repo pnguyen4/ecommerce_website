@@ -2,7 +2,7 @@
 <%- include("partials/nav.ejs");                                            %>
 
     <main class="container">
-        <div class="row center p-5 bg-light rounded">
+        <div class="row center p-5 bg-light rounded border">
 <%        if (!product) {                              %>
             <div class="col">
             Product does not exist.
@@ -18,10 +18,10 @@
                     <p><%= product.description %></p>
                     <p>Product Types: <%= product.product_type  %></p>
 <%              if (!favorited && req.user) {                               %>
-                    <button id="favorite">Favorite</button>
+                    <button class="btn btn-primary" id="favorite">Favorite</button>
                     <script src="/public/js/favorite.js"></script>
 <%              } else if (req.user){                                       %>
-                    <button id="unfavorite">Unfavorite</button>
+                    <button class="btn btn-danger" id="unfavorite">Unfavorite</button>
                     <script src="/public/js/unfavorite.js"></script>
 <%              }                                                           %>
 <%        }                                                                 %>
@@ -31,7 +31,7 @@
         <h2 id="rowgallery_banner">More From This Brand</h2>
         <div class="d-flex flex-row flex-nowrap" id="rowgallery">
 <%          brand_products.forEach(item => {                                %>
-            <div class="card mb-4 box-shadow">
+            <div class="card mb-4 box-shadow bg-light">
                 <img class="card-img-top" src="<%= item.image_uri %>">
                 <div class="card-body">
                     <a href="/products/details/<%= item._id %>">

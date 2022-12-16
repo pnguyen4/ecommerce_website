@@ -1,7 +1,0 @@
-#+TITLE:  Personal Notes
-#+Author: Phillip Nguyen
-
-* TODOs
-
-** Other
-- prettify admin page if have time

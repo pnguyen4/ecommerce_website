@@ -12,7 +12,8 @@ main {
 .card img {
   height: auto;
   width: 100%;
-  display: block; }
+  display: block;
+  padding: 1em 1em 0em 1em; }
 .card .card-body > a > p {
   white-space: nowrap;
   overflow: hidden;

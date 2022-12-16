@@ -38,7 +38,11 @@ exports.display_product = async (req, res) => {
     if (req.user && req.user.isAdmin) return res.redirect('/');
     try {
         const id = req.params.productId;
-        if (!(id && id.match(/^[0-9a-fA-F]{24}$/))) res.render('product_page, {req}')
+        let product = undefined, brand_products = undefined;
+
+        if (!(id && id.match(/^[0-9a-fA-F]{24}$/))) {
+            return res.render('product_page', {req, product, brand_products });
+        }
 
         let favorited = false;
         // will only exist if user has token and is token valid
@@ -48,12 +52,12 @@ exports.display_product = async (req, res) => {
             favorited = query.length > 0 ? true : false;
          }
 
-        const product = await Product.findById(id);
+        product = await Product.findById(id);
         if (!product) {
-            return res.render('product_page', {req, product, brand_products: undefined});
+            return res.render('product_page', {req, product, brand_products});
         }
 
-        const brand_products = await Product.find({brand: product.brand});
+        brand_products = await Product.find({brand: product.brand});
 
         res.render('product_page', {product, favorited, brand_products, req});
     } catch (error) {
