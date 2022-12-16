@@ -1,13 +1,11 @@
-body {
-  padding-bottom: 1rem; }
-
+/*** Shared ***/
 main {
   padding: 1rem; }
 
-.navbar-brand {
-  margin-left: 0.5em; }
-  .navbar-brand img {
-    margin-right: 0.25em; }
+/*** Homepage (main.ejs) ***/
+main.col-md-9 {
+  margin: auto;
+  width: 85%; }
 
 .card img {
   height: auto;
@@ -24,10 +22,19 @@ main {
   color: #333333 !important;
   text-decoration: none !important; }
 
-.productname {
-  font-weight: bold; }
+#navigation {
+  text-align: center; }
+  #navigation a {
+    margin-left: 1em;
+    margin-right: 1em; }
 
-li.active {
+/*** navbar (partials/nav.ejs) ***/
+.navbar-brand {
+  margin-left: 0.5em; }
+  .navbar-brand img {
+    margin-right: 0.25em; }
+
+li.active, .productname {
   font-weight: bold; }
 
 ul.mr-auto {
@@ -37,6 +44,7 @@ ul.mr-auto {
 ul.user {
   margin-right: 0.5em; }
 
+/*** Filter Panel and Favorites List (left and right sidebars) ***/
 ul.flex-column h4 {
   margin-left: -1.5em;
   margin-top: 0.5em; }
@@ -58,6 +66,25 @@ ul.flex-column li {
   ul.flex-column li button {
     border: 1px solid #EEEEEE; }
 
+.right-sidebar {
+  position: fixed;
+  top: 71px;
+  bottom: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: #EEEEEE;
+  right: 0; }
+
+.left-sidebar {
+  position: fixed;
+  top: 71px;
+  bottom: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: #EEEEEE;
+  left: 0; }
+
+/*** Signup and Login (signup_page.ejs and login_page.ejs) ***/
 .form-user {
   width: 100%;
   max-width: 330px;
@@ -71,29 +98,7 @@ ul.flex-column li {
   .form-user button {
     width: 100%; }
 
-.left-sidebar, .right-sidebar {
-  position: fixed;
-  top: 71px;
-  bottom: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
-  background-color: #EEEEEE; }
-
-.right-sidebar {
-  right: 0; }
-
-.left-sidebar {
-  left: 0; }
-
-main.col-md-9 {
-  margin: auto; }
-
-#navigation {
-  text-align: center; }
-  #navigation a {
-    margin-left: 1em;
-    margin-right: 1em; }
-
+/*** Product Page (product_page.ejs) ***/
 #rowgallery {
   overflow-x: scroll; }
   #rowgallery .card {
