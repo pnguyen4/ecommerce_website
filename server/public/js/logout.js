@@ -8,7 +8,7 @@ const logout = async () => {
     });
 
     if (res.status == 200) {
-        document.getElementsByTagName('BODY')[0].innerHTML = "<h1>Logging Out...</h1>";
+        document.getElementsByTagName('BODY')[0].innerHTML = '<br><br><h1 style="text-align: center";>Logging Out...</h1>';
         await delay(1000);
         location.href = "/";
     } else {

@@ -1,10 +1,22 @@
+body {
+  padding-bottom: 1rem; }
+
 main {
   padding: 1rem; }
+
+.navbar-brand {
+  margin-left: 0.5em; }
+  .navbar-brand img {
+    margin-right: 0.25em; }
 
 .card img {
   height: auto;
   width: 100%;
   display: block; }
+.card .card-body > a > p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; }
 
 .card-body a {
   font-weight: bold;
@@ -34,8 +46,14 @@ ul.flex-column li {
   list-style-type: none;
   margin-left: -2em;
   margin-bottom: 0.5em; }
-  ul.flex-column li a {
-    text-decoration: none !important; }
+  ul.flex-column li span {
+    display: inline-block;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; }
+    ul.flex-column li span a {
+      text-decoration: none !important; }
   ul.flex-column li button {
     border: 1px solid #EEEEEE; }
 
@@ -54,7 +72,7 @@ ul.flex-column li {
 
 .left-sidebar, .right-sidebar {
   position: fixed;
-  top: 57px;
+  top: 71px;
   bottom: 0;
   overflow-x: hidden;
   overflow-y: auto;

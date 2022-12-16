@@ -1,5 +1,5 @@
-<% const brands = [1,2,3,4,5,6].map(x => `brand${x}`);
-   const types = [1,2,3].map(x=> `type${x}`);
+<% const brands = ["HP", "Lenovo", "Dell", "Samsung", "ASUS", "Acer"];
+   const types = ["Chromebook", "Gaming", "Business"];
    const brandChecked = brand => {
         if (!req.query.brand) return false;
         // to handle both single and multiple values

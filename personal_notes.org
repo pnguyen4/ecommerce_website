@@ -2,8 +2,7 @@
 #+Author: Phillip Nguyen
 
 * TODOs
-- add fake branding to website
-- get actual product names, descriptions, images
+- fix auth middleware to not show weird error when jwt token is invalid, i.e. after reseeding database
 
 ** Other
 - prettify admin page if have time

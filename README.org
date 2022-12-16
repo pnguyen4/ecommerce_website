@@ -20,34 +20,35 @@ This just:
     - ~ejs~ as our template engine
 2. sets ~/public~ as publically available static files, some JS, SASS-generated CSS, and images for our products.
 3. imports our individual routes exported by ~routes/index.js~
-4. provides a catch-all route to display a "page not found" error that redirects back to home
+4. provides a catch-all route to display a "page not found" error
 
 ** ~config/~
 - ~db.js~: connects to the database, connection object exported to index.js
 - ~seed.js~ wipes the database and initializes it with an admin, a standard user, and 30 products. Run with ~npm run seed~.
+- ~products.json~: our seed data
 
 ** ~routes/~
 Uses Express Router to listen for all requests and delegates response generation to controller.
 - ~index.js~: aggregates all our routes
 - ~ProductRouter.js~: handles all requests related to products
 - ~UserRouter.js~: handles all requests related to user functions
-- ~UIRouter.js~: handles all requests for individual pages, including admin page
+- ~UIRouter.js~: handles all requests for individual miscellaneous pages, including admin page
 
 ** ~middleware/~
 - ~auth.js~: dependent on if the route /requires/ a token or just needs one to expose certain functionality
   - ~requires_token()~:
-    1. user request has a jwt token (meaning they are signed in) for   es that require it.
-    2. user's token is not blacklisted (meaning they haven't alread  gned out elsewhere)
+    1. user request has a jwt token (meaning they are signed in) for routes that require it.
+    2. user's token is not blacklisted (meaning they haven't already  logged out elsewhere)
     3. user's token is valid (hasn't expired, malformed)
   - ~optional_token()~:
-    1. passes along jwt payload if user has one, it isn't blacklisted,  and it is valid
+    1. passes along jwt payload if user has one, it isn't blacklisted, and it is valid
     2. otherwise fail gracefully and operate as though user is not signed in
 
 
 ** ~controllers/~
 1. This contains the logic for generating responses to HTTP requests.
 2. Will interact with the database following the outline set by our schemas from ~Models/~
-3. After each successful operation the view will be re-rendered with SSR.
+3. After each successful operation the view will be re-rendered with EJS SSR.
 - ~ProductController.js~
 - ~UserController.js~
 - ~AdminController.js~
