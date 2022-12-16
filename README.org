@@ -31,13 +31,17 @@ Uses Express Router to listen for all requests and delegates response generation
 - ~index.js~: aggregates all our routes
 - ~ProductRouter.js~: handles all requests related to products
 - ~UserRouter.js~: handles all requests related to user functions
-- ~UIRouter.js~: handles all requests for individual pages
+- ~UIRouter.js~: handles all requests for individual pages, including admin page
 
 ** ~middleware/~
-- ~auth.js~: just checks to see if :
-  1. user request has a jwt token (meaning they are signed in) for routes that require it.
-  2. user's token is not blacklisted (meaning they haven't already signed out elsewhere)
-  3. user's token is valid (hasn't expired, malformed)
+- ~auth.js~: dependent on if the route /requires/ a token or just needs one to expose certain functionality
+  - ~requires_token()~:
+    1. user request has a jwt token (meaning they are signed in) for   es that require it.
+    2. user's token is not blacklisted (meaning they haven't alread  gned out elsewhere)
+    3. user's token is valid (hasn't expired, malformed)
+  - ~optional_token()~:
+    1. passes along jwt payload if user has one, it isn't blacklisted,  and it is valid
+    2. otherwise fail gracefully and operate as though user is not signed in
 
 
 ** ~controllers/~
@@ -46,6 +50,7 @@ Uses Express Router to listen for all requests and delegates response generation
 3. After each successful operation the view will be re-rendered with SSR.
 - ~ProductController.js~
 - ~UserController.js~
+- ~AdminController.js~
 
 ** ~models/~
 - ~User.js~: user schema, also has Joi code for validating new/updated users
@@ -53,13 +58,16 @@ Uses Express Router to listen for all requests and delegates response generation
 - ~Blacklist.js~: stores user tokens with a TTL equal to token's expiration date.
 
 ** ~views/~
-- ~main.ejs~: home page for regular users; main view for browsing products using pagination
+- ~main.ejs~: home page for regular users; main gallery view for browsing products using pagination
 - ~admin_page.ejs~: special page that allows admins to view all existing user accounts and their favorites list
 - ~signup_page.ejs~
 - ~login_page.ejs~
+- ~product_page.ejs~: displays extra information about items
 - ~partials/~:
   - ~nav.ejs~: Displays sign up and login buttons if user is not logged in, signout button when user is logged in. Always displays button to go to home page.
-  - ~header.ejs~: boilerplate, also put everything in a flexbox
+  - ~sidebar.ejs~: displays all of user's favorite products on the right side of screen
+  - ~filterpanel.ejs~: has options for filtering products in main gallery on left side of screen
+  - ~header.ejs~: boilerplate
   - ~footer.ejs~: boilerplate
 
 ** ~public/~

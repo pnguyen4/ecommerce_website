@@ -2,6 +2,7 @@
    const types = [1,2,3].map(x=> `type${x}`);
    const brandChecked = brand => {
         if (!req.query.brand) return false;
+        // to handle both single and multiple values
         const toggle = [req.query.brand].flat().indexOf(brand);
         return toggle > -1;
    }
@@ -15,22 +16,22 @@
         <form>
             <ul class="flex-column">
                 <h4>Brand</h4>
-                <% brands.forEach(brand => { %>
+<%              brands.forEach(brand => {                       %>
                 <li>
                     <input type="checkbox" name="brand" value=<%= brand %>
-                                 <% if(brandChecked(brand)) { %> checked <% } %> >
+<%                         if (brandChecked(brand)) { %> checked <% } %>>
                     <%= brand %>
                 </li>
-                <% })  %>
+<%              });                                             %>
 
                 <h4>Product Type</h4>
-                <% types.forEach(t => { %>
+<%              types.forEach(t => { %>
                 <li>
                     <input type="checkbox" name="type" value=<%= t %>
-                                 <% if(typeChecked(t)) { %> checked <% } %> >
+<%                         if(typeChecked(t)) { %> checked <% } %>>
                     <%= t %>
                 </li>
-                <% })  %>
+<%              });                                             %>
 
                 <button id="filter">Filter</button>
             </ul>

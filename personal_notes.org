@@ -2,8 +2,9 @@
 #+Author: Phillip Nguyen
 
 * TODOs
-- prettify product page's main card
 - add row gallery below product page's main card to display products from the same brand
+- prettify product page's main card
+- add fake branding to website
 - get actual product names, descriptions, images
 
 ** Other
