@@ -3,9 +3,9 @@
 
     <main class="container">
         <div class="row center p-5 bg-light rounded">
-<%        if (!product) {                                                   %>
+<%        if (!product) {                              %>
             <div class="col">
-            Sorry, No Items Found! Msg: <%= error %>
+            Product does not exist.
             </div>
 <%        } else {                                                          %>
                 <div class="col-xl-4">
@@ -27,6 +27,7 @@
 <%        }                                                                 %>
                 </div>
         </div>
+<%      if (brand_products) {                         %>
         <h2 id="rowgallery_banner">More From This Brand</h2>
         <div class="d-flex flex-row flex-nowrap" id="rowgallery">
 <%          brand_products.forEach(item => {                                %>
@@ -40,6 +41,7 @@
                 </div>
             </div>
 <%            });                                                           %>
+<%      }                                                                   %>
         </div>
     </main>
 <%- include("partials/footer.ejs"); %>

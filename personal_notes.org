@@ -2,7 +2,6 @@
 #+Author: Phillip Nguyen
 
 * TODOs
-- fix auth middleware to not show weird error when jwt token is invalid, i.e. after reseeding database
 
 ** Other
 - prettify admin page if have time

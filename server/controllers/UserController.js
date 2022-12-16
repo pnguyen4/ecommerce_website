@@ -56,7 +56,6 @@ exports.login_user = async (req, res) => {
         res.cookie('jwt', token, {'httpOnly': true});
         res.status(200).send({token});
     } catch (error) {
-        console.log(error);
         msg.other = "Server error.";
         res.status(500).json({ msg });
     }
