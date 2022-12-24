@@ -25,6 +25,6 @@ app.use(routes.UIRouter);
 
 app.all('*', (req, res) => {
     res.status(404).send(`<h1>Page not found at url: ${req.url}</h1>`);
-})
+});
 
 module.exports = app;
