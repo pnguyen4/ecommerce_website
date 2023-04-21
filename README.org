@@ -1,5 +1,7 @@
-#+TITLE: Beaconfire Project: E-Commerce Website
+#+TITLE: E-Commerce Website
 #+AUTHOR: Phillip Nguyen
+
+Example Server-Side Rendered Website using EJS.
 
 [[https://github.com/pnguyen4/ecommerce_website/blob/main/schema.org][Click here to see schema]]
 
